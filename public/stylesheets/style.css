@@ -2,7 +2,11 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+li{
+  font-size: 28px;
+}
 
-a {
-  color: #00B7FF;
+li:hover{
+  cursor: pointer;
+  text-decoration: line-through;
 }

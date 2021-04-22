@@ -31,3 +31,31 @@ ToDoForm.addEventListener(`submit`,(e)=>{
     })
 
 })
+
+//deleteing part
+
+todoList.addEventListener(`click`,(e)=>{
+  
+    if(e.target.tagName=="LI"){
+        let idObj={
+            _id:e.target.id
+        }
+        fetch("/todo/deleteItem",{
+            method:"Delete",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(idObj)
+        }).then(res=>res.json())
+        .then(data=>{
+           let {error,deleted}=data;
+            if(error){
+                alert(error);
+                return
+            }
+          if(deleted){
+             e.target.remove()
+          }
+        })
+    }
+})

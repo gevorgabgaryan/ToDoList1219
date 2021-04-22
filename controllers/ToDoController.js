@@ -24,6 +24,16 @@ class ToDoController{
      }
 
     }
+    async deleteTask(req,res){
+        try{
+         console.log(req.body)
+         let result=await ToDoModel.deleteOne({_id:req.body._id});
+         res.json({deleted:result.n})
+        }catch(err){
+            console.log(err)
+            res.json({error:err.message})
+        }  
+    }
 }
 
 module.exports=new ToDoController();

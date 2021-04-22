@@ -1,11 +1,25 @@
 const createError = require('http-errors');
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./routes/index');
+
+const indexRouter = require('./routes/IndexRouter.js');
 const usersRouter = require('./routes/users');
+
+
+//connetc mongo db
+  const {link}=require(`./config/config`)
+  mongoose.connect(link,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true
+  },(err)=>{
+    if(err) throw err;
+    console.log(`connected`)
+  })
+
 
 const app = express();
 
